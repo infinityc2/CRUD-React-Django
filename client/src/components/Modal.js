@@ -22,7 +22,7 @@ class Modals extends Component {
 
   handleChange = e => {
     let { name, value } = e.target;
-    
+
     const activeItem = { ...this.state.activeItem, [name]: value };
     this.setState({ activeItem });
   };
@@ -31,37 +31,37 @@ class Modals extends Component {
     const { toggle, onSave } = this.props;
     return (
       <Modal isOpen={true} toggle={toggle}>
-            <ModalHeader toggle={toggle}> Item </ModalHeader>
-            <ModalBody>
-              <Form>
-                <FormGroup>
-                  <Label for="title">Title</Label>
-                  <Input
-                    type="text"
-                    name="name"
-                    value={this.state.activeItem.name}
-                    onChange={this.handleChange}
-                    placeholder="Enter name"
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="description">Description</Label>
-                  <Input
-                    type="text"
-                    name="description"
-                    value={this.state.activeItem.description}
-                    onChange={this.handleChange}
-                    placeholder="Enter description"
-                  />
-                </FormGroup>
-              </Form>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="success" onClick={() => onSave(this.state.activeItem)}>
-                Save
+        <ModalHeader toggle={toggle}> Item </ModalHeader>
+        <ModalBody>
+          <Form>
+            <FormGroup>
+              <Label for="title">Title</Label>
+              <Input
+                type="text"
+                name="name"
+                value={this.state.activeItem.name}
+                onChange={this.handleChange}
+                placeholder="Enter name"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="description">Description</Label>
+              <Input
+                type="text"
+                name="description"
+                value={this.state.activeItem.description}
+                onChange={this.handleChange}
+                placeholder="Enter description"
+              />
+            </FormGroup>
+          </Form>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="success" onClick={() => onSave(this.state.activeItem)}>
+            Save
               </Button>
-            </ModalFooter>
-          </Modal>
+        </ModalFooter>
+      </Modal>
     )
   }
 }

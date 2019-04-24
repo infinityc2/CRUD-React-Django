@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// eslint-disable-next-line no-unused-vars
-import logo from './assets/img/logo.svg';
 import './assets/css/App.css';
 import Modal from './components/Modal';
 import axios from "axios";
@@ -18,9 +16,11 @@ class App extends Component {
       },
     }
   }
+
   componentDidMount() {
     this.refreshList();
   }
+
   refreshList = () => {
     axios
       .get("http://localhost:8000/api/items/")
@@ -28,21 +28,26 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
+  // Toggle Modal Component
   toggle = () => {
     this.setState({ modal: !this.state.modal });
   };
+
   createItem = () => {
     const item = { name: "", description: "" };
     this.setState({ activeItem: item, modal: !this.state.modal });
   };
+
   editItem = item => {
     this.setState({ activeItem: item, modal: !this.state.modal });
   };
+
   handleDelete = item => {
     axios
       .delete(`http://localhost:8000/api/items/${item.id}`)
       .then(res => this.refreshList());
   };
+
   handleSubmit = item => {
     this.toggle();
     if (item.id) {
